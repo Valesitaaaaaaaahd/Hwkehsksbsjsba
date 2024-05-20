@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información Interactiva</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+        .image-container img {
+            max-width: 200px;
+            margin-right: 70px;
+            cursor: pointer; /* Cambiar el cursor a un puntero al pasar sobre la imagen */
+        }
+        .info-container {
+            max-width: 600px;
+        }
+        .button-container {
+            margin-bottom: 10px;
+            position: relative; /* Establecer posición relativa */
+        }
+        .button-container button {
+            margin-right: 10px;
+        }
+        nav {
+            background-color: #333; /* Fondo del menú */
+            padding: 40px 0; /* Espacio interno */
+            text-align: center;
+            height: auto;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff; /* Color del texto del menú */
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        nav ul li a:hover {
+            background-color: #555; /* Cambio de color al pasar el cursor */
+        }
+        .container1{
+            background-color: grey; /* Fondo del menú */
+            padding: 40px 0; /* Espacio interno */
+            text-align: center;
+            height: auto;
+        }
+  h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+             <li><a href="#">Acerca de</a></li>
+            <li><a href="#">Contacto</a></li>
+             <li><a href="#">sobre nosotros</a></li>
+            
+        </ul>
+    </nav>
+    <h1>PELICULAS 2023</h1>
+    <div class="container">
+        <div class="image-container">
+            <img src=" bell.jpg" alt="Descripción de la imagen" onclick="cambiarImagen()">
+        </div>
+        <div class="info-container">
+            <div class="button-container">
+                <button onclick="mostrarHistoria()">Historia</button>
+                <button onclick="mostrarresumen()">Resumen</button>
+                <button onclick="mostrarNombres()">Temas</button>
+                <button onclick="mostrarGrupo()"> favoritos</button>
+            </div>
+            <div id="info-text">
+                <p>Bienvenido. Selecciona una opción para ver la información.</p>
+            </div>
+            <div class="button-container">
+                <button id="colorButton" onclick="cambiarColor()">Cambiar Color</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Array de imágenes y su información asociada
+        var imagenes = [
+            { src: "bell.jpg", info: "Información de la imagen 1" },
+            { src: "pri.jpg", info: "Información de la imagen 2" },
+            { src: "pon.jpg", info: "Información de la imagen 3" },
+            { src: "bes.jpg", info: "Información de la imagen 4" }
+        ];
+
+        var indiceImagenActual = 0; // Índice de la imagen actual
+
+        // Función para cambiar la imagen y la información asociada
+        function cambiarImagen() {
+            indiceImagenActual = (indiceImagenActual + 1) % imagenes.length; // Cambiar al siguiente índice circularmente
+            var nuevaImagen = imagenes[indiceImagenActual]; // Obtener la nueva imagen y su información asociada
+            document.querySelector('.image-container img').src = nuevaImagen.src; // Cambiar la imagen
+            document.getElementById('info-text').innerHTML = nuevaImagen.info; // Cambiar la información asociada
+        }
+
+        // Funciones para mostrar diferentes tipos de información (simuladas)
+        function mostrarHistoria() {
+            document.getElementById('info-text').innerHTML = `
+                <h2>Historia</h2>
+                <p>Crepúsculo (título original en inglés: Twilight) es una serie de cinco libros para adolescentes escritos por la estadounidense Stephenie Meyer. Dos obras suplementarias han sido publicadas también.
+
+Gracias a esta serie de novelas que se inició en 2005 con la historia de Crepúsculo y a la que seguirían Luna Nueva (2006), Eclipse (2007), Amanecer (2008) y Amanecer parte 2 (2009), la autora se convirtió en una de las escritoras de novela fantástica con más ventas en todo el mundo. La serie, cuya primera obra literaria (Crepúsculo) fue llevada al cine en 2008, ha sido traducida a más de veinte idiomas y ha vendido más de 100 millones de copias en todo el mundo. Además, Amanecer (en inglés: Breaking Dawn) fue el libro más vendido en 2008, mientras que la serie, como tal, rompió el récord de ventas en los Estados Unidos.2​
+
+Los libros, enmarcados dentro de la fantasía romántica, narran la historia de amor entre una chica mortal (Bella) y un vampiro (Edward).3​Los libros están narrados, casi en su totalidad, por Bella; solo el epílogo de Eclipse y una parte de Amanecer están narrados desde la perspectiva de Jacob Black. La autora lleva varios años elaborando la quinta parte, un libro que narra la misma historia de Crepúsculo desde el punto de vista de Edward. Debido a la filtración de los doce primeros capítulos en Internet, Stephenie Meyer suspendió el proyecto por tiempo indefinido; sin embargo, publicó de manera oficial el borrador con los capítulos filtrados.4​
+
+El 5 de junio de 2010, Meyer publicó una novela corta (compañera de la serie Crepúsculo) titulada La segunda vida de Bree Tanner,5​ historia que relata el mundo de los neófitos a través de Bree, una chica que tuvo una breve aparición en Eclipse.</p>
+            `;
+        }
+
+        function mostrarresumen() {
+            document.getElementById('info-text').innerHTML = `
+                <h2>Resumen</h2>
+                <p>Cuando Isabella Swan se muda a Forks, una pequeña localidad del estado de Washington donde no deja de llover, piensa que es lo más aburrido que le podía haber ocurrido. Pero su vida da un giro excitante y aterrador una vez que se encuentra con el misterioso y seductor Edward Cullen.</p>
+            `;
+        }
+
+        function mostrarNombres() {
+            document.getElementById('info-text').innerHTML = `
+                <h2>Temas e inspiracion</h2>
+                <p>Según la autora, sus libros hablan «sobre la vida, no la muerte» y «sobre el amor, no la lujuria». Cada libro fue inspirado y vagamente basado en un clásico literario: Crepúsculo en Orgullo y prejuicio de Jane Austen; Luna nueva en Romeo y Julieta de Shakespeare; Eclipse en Cumbres Borrascosas de Emily Brontë y Amanecer en El sueño de una noche de verano de Shakespeare.16​
+
+Otros grandes temas en la serie son la posibilidad de la libre elección y la voluntad propia. Meyer dice que los libros se centran en torno a la elección de Bella a elegir su propia vida y a la abstención de los Cullen al rechazar sus instintos y tentaciones: «Realmente creo en la metáfora de mis vampiros. No importa dónde te quedas atrapado en la vida o lo que piensas que tienes que hacer, siempre puedes elegir otra cosa. Siempre hay un camino diferente».
+
+Meyer, que es mormona, reconoce que su fe ha influido en su trabajo. En particular, dice que sus personajes «tienden a pensar más sobre dónde vienen y hacia dónde van». También evita dirigir sus temas al sexo, a pesar de la naturaleza romántica de las novelas. Afirma que el influjo de lo mormón o la promoción de las virtudes de la abstinencia sexual y la pureza espiritual no son intencionales, pero reconoce que su escritura está determinada por sus valores</p>
+            `;
+        }
+
+        function mostrarGrupo() {
+            document.getElementById('info-text').innerHTML = `
+                <h2>Grupo</h2>
+                <p>El grupo relacionado con este tema es...</p>
+            `;
+        }
+
+        // Función para cambiar el color de fondo (simulada)
+        function cambiarColor() {
+            var body = document.body;
+            var currentBackgroundColor = body.style.backgroundColor;
+            var currentColor = body.style.color;
+            
+            // Cambiar color de fondo y texto
+            if (currentBackgroundColor === "rgb(242, 242, 242)" && currentColor === "rgb(0, 0, 0)") {
+                body.style.backgroundColor = "#1a237e"; // Azul marino
+                body.style.color = "#fff"; // Blanco
+            } else if (currentBackgroundColor === "rgb(26, 35, 126)" && currentColor === "rgb(255, 255, 255)") {
+                body.style.backgroundColor = "#f2f2f2"; // Blanco
+                body.style.color = "#000"; // Negro
+            } else {
+                body.style.backgroundColor = "rgb(26, 35, 126)"; // Azul marino
+                body.style.color = "#fff"; // Blanco
+            }
+          
+        }
+    </script>
+    <div class="container1">
+        <ul>
+            <ol><a href="#">Inicio</a></ol>
+             <ol><a href="#">Acerca de</a></ol>
+            <ol><a href="#">Contacto</a></ol>
+             <ol><a href="#">sobre nosotros</a></ol>
+            <a href="#"><img classs="red" src="iconos.png" style="width:190px; height: 100px;"></a>
+        </ul>
+    </div>
+    
+</body>
+</html>
